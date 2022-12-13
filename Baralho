@@ -18,28 +18,42 @@ public class Baralho {
         this.pegarTrunfo();
     }
 
-    public List<String> cria_baralho() {
-        Map<String, Integer> value = new TreeMap<>();
-        value.put("2", 0);
-        value.put("3", 0);
-        value.put("4", 0);
-        value.put("5", 0);
-        value.put("6", 0);
-        value.put("Q", 2);
-        value.put("J", 3);
-        value.put("K", 4);
-        value.put("7", 10);
-        value.put("A", 11);
+    public void novoBaralho() {
+        List<Integer> valores = new ArrayList<Integer>(){};
+        valores.add(0);
+        valores.add(0);
+        valores.add(0);
+        valores.add(0);
+        valores.add(0);
+        valores.add(2);
+        valores.add(3);
+        valores.add(4);
+        valores.add(10);
+        valores.add(11);
 
-        String[] naipes = { " Copas", " Espadas", " Ouros", " Paus" };
-        List<String> cartas = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            for (String key : value.keySet()) {
-                cartas.add(key + naipes[i]);
+        List<String> cartasLabel = new ArrayList<String>(){};
+        cartasLabel.add("2");
+        cartasLabel.add("3");
+        cartasLabel.add("4");
+        cartasLabel.add("5");
+        cartasLabel.add("6");
+        cartasLabel.add("Q");
+        cartasLabel.add("J");
+        cartasLabel.add("K");
+        cartasLabel.add("7");
+        cartasLabel.add("A");
+
+        List<String> naipes = new ArrayList<String>(){};
+        naipes.add("copas");
+        naipes.add("espadas");
+        naipes.add("ouros");
+        naipes.add("paus");
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 4; j++) {
+                this.baralho.add(new Carta(cartasLabel.get(i), naipes.get(j), valores.get(i), i));
             }
         }
-
-        return cartas;
     }
     
     public void embaralhar() {
