@@ -64,7 +64,13 @@ public class Baralho {
         this.trunfo = this.baralho.get(this.baralho.size() - 1);
     }
 
-    public void distribui() {
-        return;
+   public Carta pegarCarta() {
+        Carta removida = this.baralho.get(0);
+        this.baralho.remove(0);
+        return removida;
+    }
+
+    public int cartasRestantes() {
+        return this.baralho.size();
     }
 }
