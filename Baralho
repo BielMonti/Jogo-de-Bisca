@@ -57,11 +57,11 @@ public class Baralho {
     }
     
     public void embaralhar() {
-		Collections.shuffle(cartas);
+	Collections.shuffle(this.baralho);
 	}
 
-    public String cria_trunfo() {
-        return trunfo;
+   public void pegarTrunfo() {
+        this.trunfo = this.baralho.get(this.baralho.size() - 1);
     }
 
     public void distribui() {
