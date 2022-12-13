@@ -3,12 +3,20 @@ package main.bisca;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Baralho {
 
-    private String trunfo;
+    public List<Carta> baralho;
+    public Carta trunfo;
+
+    public Baralho() {
+        this.baralho = new ArrayList<Carta>() {
+        };
+
+        this.novoBaralho();
+        this.embaralhar();
+        this.pegarTrunfo();
+    }
 
     public List<String> cria_baralho() {
         Map<String, Integer> value = new TreeMap<>();
