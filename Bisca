@@ -136,3 +136,28 @@ public class Bisca {
             this.darCartas();
         }
     }
+
+    void rodada(int rod) {
+        Carta trunfo = this.baralho.trunfo;
+
+        System.out.println("\nRodada " + rod + " (trunfo: " + trunfo.printCarta() + "):");
+
+        Resultado resultados = this.jogarCartas(trunfo);
+
+        this.printJogadas(resultados.indexGanhador, resultados.jogadas);
+
+        int pontosRodada = this.pontosRodada(resultados.jogadas);
+
+        this.players.get(resultados.indexGanhador).adicionarPontos(pontosRodada);
+
+        this.reordenarPlayers(resultados.indexGanhador);
+    }
+
+    int somarTime(List<Player> time) {
+        int tam = time.size();
+        int soma =0;
+        for(int i=0; i<tam; i++){
+            soma += time.get(i).pontos;
+        }
+        return soma;
+    }
