@@ -161,3 +161,49 @@ public class Bisca {
         }
         return soma;
     }
+
+    void finalizar() {
+
+        int pontosTime1 = somarTime(this.time1);
+        int pontosTime2 = somarTime(this.time2);
+        
+        if(pontosTime1 == pontosTime2){
+            System.out.println("\n\nEmpate! " + pontosTime1 + " x " + pontosTime2);
+            return;
+        }
+        
+        List<Player> ganhadores = pontosTime1 > pontosTime2 ? this.time1 : this.time2;
+        
+        List<String> nomesGanhadoresArray = new ArrayList<String>(){};
+        int tam = ganhadores.size();
+        
+        for(int i=0; i<tam ;i++){
+            nomesGanhadoresArray.add(ganhadores.get(i).nome);
+        }
+        
+        String nomesGanhadores = String.join(" e ", nomesGanhadoresArray);
+        
+        System.out.println("\n\nVitoria de " + nomesGanhadores + "! " + pontosTime1 + " x " + pontosTime2);
+    }
+
+    void jogar(){
+        this.iniciar();
+        
+        int rodadas =0 ;
+        while(this.baralho.cartasRestantes()>0){
+            rodadas++;
+            
+            this.rodada(rodadas);
+            this.darCartas();
+        }
+        
+        for(int i=0; i<3; i++){
+            rodadas++;
+            
+            this.rodada(rodadas);
+        }
+        
+        this.finalizar();
+    }
+    
+}
