@@ -1,0 +1,12 @@
+public class Player {
+
+    String nome;
+    List<Carta> mao;
+    int pontos;
+
+    Player(String nome) {
+        this.nome = nome;
+        this.mao = new ArrayList<Carta>() {
+        };
+        this.pontos = 0;
+    }
