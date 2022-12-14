@@ -20,3 +20,21 @@ public class Player {
     void receberCarta(Carta carta) {
         this.mao.add(carta);
     }
+
+    Carta usarCarta() {
+        Random rnd = new Random();
+        int rnd1 = rnd.nextInt(this.mao.size());
+        Carta removida = this.mao.get(rnd1);
+        this.mao.remove(rnd1);
+        return removida;
+    }
+
+    void adicionarPontos(int pontos) {
+        this.pontos += pontos;
+    }
+
+    int consultarPontos() {
+        return this.pontos;
+    }
+
+}
