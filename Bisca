@@ -110,3 +110,29 @@ public class Bisca {
 
         return new Resultado(cartaGanhador, indexGanhador, jogadas);
     }
+
+    void printJogadas(int indexGanhador, List<Carta> jogadas) {
+        int tam = this.players.size();
+        for (int i = 0; i < tam; i++) {
+            Player player = this.players.get(i);
+            String cartaPlayer = (i + 1) + " - " + player.nome + ": " + jogadas.get(i).printCarta();
+            String vencedorPlayer = i == indexGanhador ? " (vencedor)" : "";
+
+            System.out.println(cartaPlayer + vencedorPlayer);
+        }
+    }
+
+    int pontosRodada(List<Carta> jogadas) {
+        int tam = jogadas.size();
+        int soma = 0;
+        for (int i = 0; i < tam; i++) {
+            soma += jogadas.get(i).valor;
+        }
+        return soma;
+    }
+
+    void iniciar() {
+        for (int i = 0; i < 3; i++) {
+            this.darCartas();
+        }
+    }
