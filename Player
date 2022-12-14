@@ -46,3 +46,12 @@ public class Player {
     }
     
 }
+
+    void darCartas() {
+        int tam = this.players.size();
+
+        for (int i = 0; i < tam; i++) {
+            Carta cartaPuxada = this.baralho.pegarCarta();
+            this.players.get(i).receberCarta(cartaPuxada);
+        }
+    }
