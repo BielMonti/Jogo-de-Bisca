@@ -1,8 +1,12 @@
 package main.bisca; 
-
+ public class Carta {
  Carta(String carta, String naipe, int valor, int ordem) {
         this.carta = carta;
         this.naipe = naipe;
         this.valor = valor;
         this.ordem = ordem;
+    }
+ String printCarta() {
+        return this.carta + " de " + this.naipe;
+    }
     }
