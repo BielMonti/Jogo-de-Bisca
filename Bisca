@@ -73,3 +73,40 @@ public class Bisca {
             this.players.get(i).receberCarta(cartaPuxada);
         }
     }
+
+    void reordenarPlayers(int indexInicial) {
+        List<Player> novaOrdemPlayers = new ArrayList<Player>() {
+        };
+
+        for (int i = indexInicial; i < this.players.size() + indexInicial; i++) {
+            int pegarPos = i % this.players.size();
+            Player pegarPlayer = this.players.get(pegarPos);
+            novaOrdemPlayers.add(pegarPlayer);
+        }
+
+        this.players = novaOrdemPlayers;
+    }
+
+    Resultado jogarCartas(Carta trunfo) {
+        Carta cartaGanhador = null;
+        int indexGanhador = -1;
+
+        List<Carta> jogadas = new ArrayList<Carta>() {
+        };
+
+        int tam = this.players.size();
+        for (int i = 0; i < tam; i++) {
+            Carta jogada = this.players.get(i).usarCarta();
+
+            jogadas.add(jogada);
+
+            if (cartaGanhador == null
+                    || (cartaGanhador.naipe.equals(jogada.naipe) && cartaGanhador.ordem < jogada.ordem)
+                    || (!(cartaGanhador.naipe.equals(jogada.naipe)) && !(jogada.naipe.equals(trunfo.naipe)))) {
+                cartaGanhador = jogada;
+                indexGanhador = i;
+            }
+        }
+
+        return new Resultado(cartaGanhador, indexGanhador, jogadas);
+    }
