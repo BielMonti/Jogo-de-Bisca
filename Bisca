@@ -1,10 +1,8 @@
 package main.bisca;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.*;
+
 
 class Resultado {
 
@@ -12,6 +10,7 @@ class Resultado {
     int indexGanhador;
     List<Carta> jogadas;
 
+    
     Resultado(Carta cartaGanhador, int indexGanhador, List<Carta> jogadas) {
         this.cartaGanhador = cartaGanhador;
         this.indexGanhador = indexGanhador;
@@ -22,12 +21,16 @@ class Resultado {
 
 public class Bisca {
 
+    
     public List<Player> players;
     public Baralho baralho;
     public List<Player> time1;
     public List<Player> time2;
-
+    public Boolean reli;
+    
+    
     public Bisca(String p1, String p2) {
+        this.reli = false;
         this.baralho = new Baralho();
         
         this.players = new ArrayList<Player>() {
@@ -44,7 +47,9 @@ public class Bisca {
         this.time2.add(this.players.get(1));
     }
 
+   
     public Bisca(String p1, String p2, String p3, String p4) {
+        this.reli = false;
         this.baralho = new Baralho();
         
         this.players = new ArrayList<Player>() {
@@ -65,7 +70,8 @@ public class Bisca {
         this.time1.add(this.players.get(3));
     }
 
-    void darCartas() {
+    
+     void darCartas() {
         int tam = this.players.size();
 
         for (int i = 0; i < tam; i++) {
@@ -74,6 +80,7 @@ public class Bisca {
         }
     }
 
+   
     void reordenarPlayers(int indexInicial) {
         List<Player> novaOrdemPlayers = new ArrayList<Player>() {
         };
@@ -87,6 +94,7 @@ public class Bisca {
         this.players = novaOrdemPlayers;
     }
 
+    
     Resultado jogarCartas(Carta trunfo) {
         Carta cartaGanhador = null;
         int indexGanhador = -1;
@@ -96,13 +104,40 @@ public class Bisca {
 
         int tam = this.players.size();
         for (int i = 0; i < tam; i++) {
-            Carta jogada = this.players.get(i).usarCarta();
+            Player player = this.players.get(i);
+            Carta jogada = player.usarCarta();
 
+            
+            Boolean regra1 = (player.mao.size() > 1 && !(this.reli) && jogada.carta == "A"
+                    && jogada.naipe == trunfo.naipe);
+            
+           
+            Boolean regra2 = (!(this.reli) && jogada.carta == "7" && jogada.naipe == trunfo.naipe);
+                    
+            
+            if (regra1) {
+                Carta devolver = jogada;
+                jogada = player.usarCarta();
+                player.receberCarta(devolver);
+            }
+            
+            
+            if (regra2) {
+                this.reli = true;
+            }
+            
             jogadas.add(jogada);
-
-            if (cartaGanhador == null
-                    || (cartaGanhador.naipe.equals(jogada.naipe) && cartaGanhador.ordem < jogada.ordem)
-                    || (!(cartaGanhador.naipe.equals(jogada.naipe)) && !(jogada.naipe.equals(trunfo.naipe)))) {
+            
+            Boolean regra3 = cartaGanhador == null; // é a primeira carta jogada?
+            Boolean regra4 = false; // são do mesmo naipe e a jogada é de ordem maior?
+            Boolean regra5 = false; // são de naipes diferentes e a jogada é do naipe do trunfo?
+            
+            if (!regra3) {
+                regra4 = (cartaGanhador.naipe.equals(jogada.naipe) && cartaGanhador.ordem < jogada.ordem);
+                regra5 = (!(cartaGanhador.naipe.equals(jogada.naipe)) && jogada.naipe.equals(trunfo.naipe));
+            }
+            
+            if (regra3 || regra4 || regra5) {
                 cartaGanhador = jogada;
                 indexGanhador = i;
             }
@@ -110,18 +145,23 @@ public class Bisca {
 
         return new Resultado(cartaGanhador, indexGanhador, jogadas);
     }
-
+    
+    
     void printJogadas(int indexGanhador, List<Carta> jogadas) {
         int tam = this.players.size();
+        
         for (int i = 0; i < tam; i++) {
+            Boolean regraVencedor = i == indexGanhador;
             Player player = this.players.get(i);
             String cartaPlayer = (i + 1) + " - " + player.nome + ": " + jogadas.get(i).printCarta();
-            String vencedorPlayer = i == indexGanhador ? " (vencedor)" : "";
+           
+            String vencedorPlayer = regraVencedor ? " (vencedor)" : "";
 
             System.out.println(cartaPlayer + vencedorPlayer);
         }
     }
 
+   
     int pontosRodada(List<Carta> jogadas) {
         int tam = jogadas.size();
         int soma = 0;
@@ -131,11 +171,13 @@ public class Bisca {
         return soma;
     }
 
+   
     void iniciar() {
         for (int i = 0; i < 3; i++) {
             this.darCartas();
         }
     }
+
 
     void rodada(int rod) {
         Carta trunfo = this.baralho.trunfo;
@@ -174,7 +216,8 @@ public class Bisca {
         
         List<Player> ganhadores = pontosTime1 > pontosTime2 ? this.time1 : this.time2;
         
-        List<String> nomesGanhadoresArray = new ArrayList<String>(){};
+        List<String> nomesGanhadoresArray = new ArrayList<String>(){
+        };
         int tam = ganhadores.size();
         
         for(int i=0; i<tam ;i++){
