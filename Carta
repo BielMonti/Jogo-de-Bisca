@@ -1,0 +1,50 @@
+package main.bisca; 
+
+public class Carta{
+    private String naipe;
+    private int valor;
+    private final String faces;
+ 
+    public Carta(String faces, String naipe, int valor){
+        this.faces = faces;
+        this.naipe = naipe;
+        this.valor = valor;
+ 
+    }
+
+    public String toString(){
+        return this.faces + this.naipe;
+    }
+    public String getFaces(){
+        return this.faces;
+    }
+
+    public String getNaipe(){
+        return naipe;
+    }
+    public void setNaipe(){
+        this.naipe = naipe;
+    }
+ 
+    public int getValor(){
+        return valor;
+    }
+ 
+    public void setValor() {
+        this.valor = valor;
+    }
+
+    private int calcula_valor() {
+        int result;
+        result = switch (this.faces) {
+            case "Q" -> 2;
+            case "J" -> 3;
+            case "K" -> 4;
+            case "7" -> 10;
+            case "A" -> 11;
+            default -> 0;
+        };
+        return result;
+
+    }
+}
