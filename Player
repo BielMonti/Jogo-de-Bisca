@@ -1,3 +1,9 @@
+package main.bisca;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Player {
 
     String nome;
@@ -10,48 +16,7 @@ public class Player {
         };
         this.pontos = 0;
     }
-    
-     this.players = new ArrayList<Player>() {
-        };
-        this.players.add(new Player(p1));
-        this.players.add(new Player(p2));
 
-        this.time1 = new ArrayList<Player>() {
-        };
-        this.time1.add(this.players.get(0));
-
-        this.time2 = new ArrayList<Player>() {
-        };
-        this.time2.add(this.players.get(1));
-    }
-
-    void jogar(){
-        this.iniciar();
-        
-        int rodadas =0 ;
-        while(this.baralho.cartasRestantes()>0){
-            rodadas++;
-            
-            this.rodada(rodadas);
-            this.darCartas();
-        }
-        
-        for(int i=0; i<3; i++){
-            rodadas++;
-            
-            this.rodada(rodadas);
-        }
-        
-        this.finalizar();
-    }
-    
-}
-
-    void darCartas() {
-        int tam = this.players.size();
-
-        for (int i = 0; i < tam; i++) {
-            Carta cartaPuxada = this.baralho.pegarCarta();
-            this.players.get(i).receberCarta(cartaPuxada);
-        }
+    void receberCarta(Carta carta) {
+        this.mao.add(carta);
     }
