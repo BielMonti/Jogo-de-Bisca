@@ -12,7 +12,7 @@ tools {
         }
         stage('Build') {
             steps {
-                dir("C:\Users\bielm\OneDrive\Documentos\java\bisca\Bisca") {
+                dir("C:/Users/bielm/OneDrive/Documentos/java/bisca/Bisca") {
                 bat 'mvn -B -DskipTests clean package'
                 }
             }
