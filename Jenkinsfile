@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "http://maven.apache.org/POM/4.0.0"
+        maven "C:\Users\bielm\OneDrive\Documentos\java\bisca\Bisca\target"
     }
 
     stages {
