@@ -1,112 +1,79 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
-  <localRepository/>
-  <interactiveMode/>
-  <usePluginRegistry/>
-  <offline/>
- 
-  <proxies>
-    <proxy>
-      <active/>
-      <protocol/>
-      <username/>
-      <password/>
-      <port/>
-      <host/>
-      <nonProxyHosts/>
-      <id/>
-    </proxy>
-  </proxies>
- 
-  <servers>
-    <server>
-      <username/>
-      <password/>
-      <privateKey/>
-      <passphrase/>
-      <filePermissions/>
-      <directoryPermissions/>
-      <configuration/>
-      <id/>
-    </server>
-  </servers>
- 
-  <mirrors>
-    <mirror>
-      <mirrorOf/>
-      <name/>
-      <url/>
-      <layout/>
-      <mirrorOfLayouts/>
-      <blocked/>
-      <id/>
-    </mirror>
-  </mirrors>
- 
-  <profiles>
-    <profile>
-      <activation>
-        <activeByDefault/>
-        <jdk/>
-        <os>
-          <name/>
-          <family/>
-          <arch/>
-          <version/>
-        </os>
-        <property>
-          <name/>
-          <value/>
-        </property>
-        <file>
-          <missing/>
-          <exists/>
-        </file>
-      </activation>
-      <properties>
-        <key>value</key>
-      </properties>
- 
-      <repositories>
-        <repository>
-          <releases>
-            <enabled/>
-            <updatePolicy/>
-            <checksumPolicy/>
-          </releases>
-          <snapshots>
-            <enabled/>
-            <updatePolicy/>
-            <checksumPolicy/>
-          </snapshots>
-          <id/>
-          <name/>
-          <url/>
-          <layout/>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <releases>
-            <enabled/>
-            <updatePolicy/>
-            <checksumPolicy/>
-          </releases>
-          <snapshots>
-            <enabled/>
-            <updatePolicy/>
-            <checksumPolicy/>
-          </snapshots>
-          <id/>
-          <name/>
-          <url/>
-          <layout/>
-        </pluginRepository>
-      </pluginRepositories>
-      <id/>
-    </profile>
-  </profiles>
- 
-  <activeProfiles/>
-  <pluginGroups/>
-</settings>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>projetoBisca</groupId>
+    <artifactId>bisca</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>bisca</name>
+    <description>Add project description here</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
