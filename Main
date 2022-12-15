@@ -1,8 +1,0 @@
-package main.bisca;
-
-public class Main {
-    public static void main(String[] args){
-        Bisca bisca = new Bisca("Gabriel", "Guilherme");
-        bisca.jogar();
-    }
-}

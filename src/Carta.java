@@ -1,17 +1,16 @@
-package main.bisca; 
 
 public class Carta {
 
-    / nome da carta */
+    /** nome da carta */
     String carta;
-    / naipe da carta /
+    /** naipe da carta */
     String naipe;
-    /** valor de pontuação da carta/
+    /** valor de pontuação da carta */
     int valor;
-    / ordem de força da carta */
+    /** ordem de força da carta */
     int ordem;
 
-    /
+    /**
      * Cria uma instância da carta
      * 
      * @param carta nome da carta
@@ -27,7 +26,7 @@ public class Carta {
     }
 
     /**
-     * Converte a carta em uma string
+     * Converte a carta em uma string de identificação legível para humanos
      * 
      * @return nome de identificação humana da carta
      */

@@ -1,4 +1,3 @@
-package main.bisca;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -6,14 +5,14 @@ import java.util.Random;
 
 public class Player {
 
-    / Nome do jogador */
+    /** Nome do jogador */
     String nome;
-    / Lista de cartas em posse do jogador /
+    /** Lista de cartas em posse do jogador */
     List<Carta> mao;
-    /** Pontos marcados pelo jogador/
+    /** Pontos marcados pelo jogador */
     int pontos;
 
-    /
+    /**
      * Cria uma instância de Player com o nome do jogador, a mão vazia e 0 pontos
      * 
      * @param nome nome do jogador
@@ -25,7 +24,7 @@ public class Player {
         this.pontos = 0;
     }
 
-    /
+    /**
      * Adiciona uma carta recebida por parâmetro à mão do jogador
      * @param carta Carta a ser adicionada a mão do jogador
      */
@@ -33,7 +32,7 @@ public class Player {
         this.mao.add(carta);
     }
 
-    /
+    /**
      * Remove uma carta aleatória da mão do jogador e a retorna
      * @return Carta do jogador
      */
@@ -43,7 +42,7 @@ public class Player {
         return this.mao.remove(rnd1);
     }
 
-    /
+    /**
      * Adiciona uma quantidade de pontos ao jogador
      * @param pontos Pontos a serem adicionados ao jogador
      */
